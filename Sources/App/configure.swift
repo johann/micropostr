@@ -1,4 +1,5 @@
 import FluentSQLite
+import FluentMySQL
 import Vapor
 import Leaf
 import Authentication
@@ -36,16 +37,20 @@ public func configure(
     
     // Configure a SQLite database
     var databases = DatabaseConfig()
-    try databases.add(database: SQLiteDatabase(storage: .file(path: "\(directoryConfig.workDir)microposter.db")), as: .sqlite)
+    let db = MySQLDatabase(hostname: "localhost", user: "micro", password: "micro", database: "microposter")
+
+//    try databases.add(database: SQLiteDatabase(storage: .file(path: "\(directoryConfig.workDir)microposter.db")), as: .sqlite)
+    try databases.add(database: db, as: .mysql)
     services.register(databases)
 
+    
     // Configure migrations
     var migrations = MigrationConfig()
-    migrations.add(model: Post.self, database: .sqlite)
-    migrations.add(model: User.self, database: .sqlite)
-    migrations.add(model: Token.self, database: .sqlite)
+    migrations.add(model: Post.self, database: .mysql)
+    migrations.add(model: User.self, database: .mysql)
+    migrations.add(model: Token.self, database: .mysql)
     services.register(migrations)
-    User.PublicUser.defaultDatabase = .sqlite
+    User.PublicUser.defaultDatabase = .mysql
 
     // Configure the rest of your application here
 }

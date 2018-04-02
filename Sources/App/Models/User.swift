@@ -9,6 +9,7 @@ import Foundation
 import Vapor
 import FluentSQLite
 import Authentication
+import FluentMySQL
 
 
 final class User: Content {
@@ -47,14 +48,14 @@ extension User {
 }
 
 
-extension User.PublicUser: SQLiteModel {
+extension User.PublicUser: MySQLModel {
     static let entity = User.entity
 }
 
 extension User.PublicUser: Parameter {}
 
 
-extension User: SQLiteModel {}
+extension User: MySQLModel {}
 extension User: Parameter {}
 extension User: Migration {}
 

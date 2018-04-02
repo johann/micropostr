@@ -10,6 +10,7 @@ import Vapor
 import Authentication
 import FluentSQLite
 import Crypto
+import FluentMySQL
 
 final class Token: Content {
     var id: Int?
@@ -29,7 +30,7 @@ final class Token: Content {
     }
 }
 
-extension Token: SQLiteModel {}
+extension Token: MySQLModel {}
 extension Token: Migration {}
 
 extension Token {

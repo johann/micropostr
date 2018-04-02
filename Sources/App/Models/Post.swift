@@ -8,6 +8,7 @@
 import Foundation
 import Vapor
 import FluentSQLite
+import FluentMySQL
 
 
 
@@ -36,7 +37,7 @@ extension Post {
     }
 }
 
-extension Post: SQLiteModel {}
+extension Post: MySQLModel {}
 extension Post: Migration {}
 extension Post: Parameter {}
 
