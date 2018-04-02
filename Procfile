@@ -1,2 +1,2 @@
-web: Run --env=production --port=$PORT
-# web: Run 
+# web: Run --env=production --port=$PORT
+ web: Run
