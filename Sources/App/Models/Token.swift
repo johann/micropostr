@@ -8,7 +8,6 @@
 import Foundation
 import Vapor
 import Authentication
-import FluentSQLite
 import Crypto
 import FluentMySQL
 

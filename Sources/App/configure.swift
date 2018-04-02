@@ -1,4 +1,4 @@
-import FluentSQLite
+
 import FluentMySQL
 import Vapor
 import Leaf
@@ -13,7 +13,6 @@ public func configure(
     _ services: inout Services
 ) throws {
     // Register providers first
-    try services.register(FluentSQLiteProvider())
     try services.register(LeafProvider())
     try services.register(AuthenticationProvider())
     config.prefer(LeafRenderer.self, for: TemplateRenderer.self)
